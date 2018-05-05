@@ -1,8 +1,10 @@
 # JWT Middleware for Gin Framework
 
-[![GitHub tag](https://img.shields.io/github/tag/appleboy/gin-jwt.svg)](https://github.com/appleboy/gin-jwt/releases) [![GoDoc](https://godoc.org/github.com/appleboy/gin-jwt?status.svg)](https://godoc.org/github.com/appleboy/gin-jwt)  [![Build Status](http://drone.wu-boy.com/api/badges/appleboy/gin-jwt/status.svg)](http://drone.wu-boy.com/appleboy/gin-jwt) [![Go Report Card](https://goreportcard.com/badge/github.com/appleboy/gin-jwt)](https://goreportcard.com/report/github.com/appleboy/gin-jwt) [![codecov](https://codecov.io/gh/appleboy/gin-jwt/branch/master/graph/badge.svg)](https://codecov.io/gh/appleboy/gin-jwt) [![codebeat badge](https://codebeat.co/badges/c4015f07-df23-4c7c-95ba-9193a12e14b1)](https://codebeat.co/projects/github-com-appleboy-gin-jwt) [![Sourcegraph](https://sourcegraph.com/github.com/appleboy/gin-jwt/-/badge.svg)](https://sourcegraph.com/github.com/appleboy/gin-jwt?badge)
+[![GitHub tag](https://img.shields.io/github/tag/shpilm4n/gin-jwt.svg)](https://github.com/shpilm4n/gin-jwt/releases) [![GoDoc](https://godoc.org/github.com/shpilm4n/gin-jwt?status.svg)](https://godoc.org/github.com/shpilm4n/gin-jwt) [![Go Report Card](https://goreportcard.com/badge/github.com/shpilm4n/gin-jwt)](https://goreportcard.com/report/github.com/shpilm4n/gin-jwt) [![codecov](https://codecov.io/gh/shpilm4n/gin-jwt/branch/master/graph/badge.svg)](https://codecov.io/gh/shpilm4n/gin-jwt) [![codebeat badge](https://codebeat.co/badges/c4015f07-df23-4c7c-95ba-9193a12e14b1)](https://codebeat.co/projects/github-com-shpilm4n-gin-jwt) [![Sourcegraph](https://sourcegraph.com/github.com/shpilm4n/gin-jwt/-/badge.svg)](https://sourcegraph.com/github.com/shpilm4n/gin-jwt?badge)
 
 This is a middleware for [Gin](https://github.com/gin-gonic/gin) framework.
+
+**It's a fork of [https://github.com/appleboy/gin-jwt](https://github.com/appleboy/gin-jwt) middleware**, extending `PayloadFunc` with a Gin context.
 
 It uses [jwt-go](https://github.com/dgrijalva/jwt-go) to provide a jwt authentication middleware. It provides additional handler functions to provide the `login` api that will generate the token and an additional `refresh` handler that can be used to refresh tokens.
 
@@ -11,13 +13,13 @@ It uses [jwt-go](https://github.com/dgrijalva/jwt-go) to provide a jwt authentic
 Download and install it:
 
 ```sh
-$ go get github.com/appleboy/gin-jwt
+$ go get github.com/shpilm4n/gin-jwt
 ```
 
 Import it in your code:
 
 ```go
-import "github.com/appleboy/gin-jwt"
+import "github.com/shpilm4n/gin-jwt"
 ```
 
 ## Example
@@ -33,7 +35,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/appleboy/gin-jwt"
+	"github.com/shpilm4n/gin-jwt"
 	"github.com/gin-gonic/gin"
 )
 

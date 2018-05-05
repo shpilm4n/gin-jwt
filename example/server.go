@@ -5,8 +5,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/appleboy/gin-jwt"
 	"github.com/gin-gonic/gin"
+	"github.com/shpilm4n/gin-jwt"
 )
 
 func helloHandler(c *gin.Context) {
