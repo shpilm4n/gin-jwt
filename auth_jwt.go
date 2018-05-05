@@ -54,7 +54,8 @@ type GinJWTMiddleware struct {
 	// Note that the payload is not encrypted.
 	// The attributes mentioned on jwt.io can't be used as keys for the map.
 	// Optional, by default no additional data will be set.
-	PayloadFunc func(userID string) map[string]interface{}
+	// Function is extended with Gin Context.
+	PayloadFunc func(userID string, c *gin.Context) map[string]interface{}
 
 	// User can define own Unauthorized func.
 	Unauthorized func(*gin.Context, int, string)
@@ -336,7 +337,7 @@ func (mw *GinJWTMiddleware) LoginHandler(c *gin.Context) {
 	claims := token.Claims.(jwt.MapClaims)
 
 	if mw.PayloadFunc != nil {
-		for key, value := range mw.PayloadFunc(loginVals.Username) {
+		for key, value := range mw.PayloadFunc(loginVals.Username, c) {
 			claims[key] = value
 		}
 	}
@@ -426,12 +427,12 @@ func ExtractClaims(c *gin.Context) jwt.MapClaims {
 }
 
 // TokenGenerator method that clients can use to get a jwt token.
-func (mw *GinJWTMiddleware) TokenGenerator(userID string) (string, time.Time, error) {
+func (mw *GinJWTMiddleware) TokenGenerator(userID string, c *gin.Context) (string, time.Time, error) {
 	token := jwt.New(jwt.GetSigningMethod(mw.SigningAlgorithm))
 	claims := token.Claims.(jwt.MapClaims)
 
 	if mw.PayloadFunc != nil {
-		for key, value := range mw.PayloadFunc(userID) {
+		for key, value := range mw.PayloadFunc(userID, c) {
 			claims[key] = value
 		}
 	}
